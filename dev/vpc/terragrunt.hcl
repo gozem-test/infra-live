@@ -4,7 +4,6 @@ include "root" {
 
 terraform {
   source = "git@github.com:gozem-test/vpc.git"
-  // source = "git::https://github.com/gozem-test/vpc.git"
 }
 
 inputs = {

@@ -4,7 +4,6 @@ include "root" {
 
 terraform {
   source = "git@github.com:gozem-test/internet-gateway.git"
-  // source = "git::https://github.com/gozem-test/internet-gateway.git"
 }
 
 dependency "vpc" {
