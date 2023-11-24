@@ -17,7 +17,7 @@ dependency "nacl" {
 inputs = {
   commands = [
     <<EOF
-  apk add curl && \
+  apt install curl && \
   curl --version && \
   curl -X POST \
     -H "Content-Type: application/json" \
