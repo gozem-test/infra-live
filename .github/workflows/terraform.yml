@@ -35,8 +35,6 @@ jobs:
 
       - name: Apply Terraform changes
         run: |
-          echo $AWS_ACCESS_KEY_ID
-          echo $AWS_SECRET_ACCESS_KEY
           cd dev
           terragrunt run-all apply -auto-approve --terragrunt-non-interactive -var AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -var AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -var AWS_REGION=$AWS_DEFAULT_REGION
         env:

@@ -3,8 +3,8 @@ include "root" {
 }
 
 terraform {
-  // source = "git@github.com:gozem-test/route-table.git"
-  source = "git::https://github.com/gozem-test/route-table.git"
+  source = "git@github.com:gozem-test/route-table.git"
+  // source = "git::https://github.com/gozem-test/route-table.git"
 }
 
 dependency "vpc" {
