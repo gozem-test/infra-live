@@ -6,12 +6,8 @@ terraform {
   source = "git@github.com:gozem-test/null-resource.git"
 }
 
-dependency "vpc" {
-  config_path = "../vpc"
-}
-
-dependency "nacl" {
-  config_path = "../nacl"
+dependency "cloudwatch-alarm" {
+  config_path = "../cloudwatch-metric-alarm"
 }
 
 inputs = {
