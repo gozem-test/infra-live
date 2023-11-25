@@ -17,12 +17,19 @@ dependency "public-subnets" {
 inputs = {
   vpc_id = dependency.vpc.outputs.vpc_id
   name = "public-sg"
-  description = "Open security group"
+  description = "Web security group"
   ingress_rules = [
     {
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 0
+      protocol    = "tcp"
+      from_port   = 80
+      to_port     = 80
+      cidr_blocks = ["0.0.0.0/0"]
+    },
+
+    {
+      protocol    = "tcp"
+      from_port   = 1024
+      to_port     = 65535
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
