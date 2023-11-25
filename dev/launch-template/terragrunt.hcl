@@ -28,10 +28,9 @@ inputs = {
   instance_type = "t2.micro"
   use_userdata = true
   userdata_script_path = "user-data.sh"
-  existing_security_group_ids = [dependency.security-group.outputs.security_group_id]
+  vpc_security_group_ids = [dependency.security-group.outputs.security_group_id]
   use_instance_profile = true
   instance_profile_arn = dependency.instance-profile.outputs.arn
   instance_profile_name = dependency.instance-profile.outputs.name
-  create_eip = true
-  vpc_id = dependency.vpc.outputs.vpc_id
+  template_tags = {}
 }
