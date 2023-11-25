@@ -27,5 +27,5 @@ inputs = {
     dependency.public-subnets.outputs.public_subnets[0],
     dependency.public-subnets.outputs.public_subnets[1]
   ]
-  tags = {}
+  load_balancer_tags = {}
 }
