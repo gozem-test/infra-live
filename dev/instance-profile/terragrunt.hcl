@@ -14,5 +14,5 @@ inputs = {
   instance_profile_name = "EC2InstanceProfileForSSM"
   path = "/"
   iam_role_name = dependency.iam-role.outputs.role_name
-  tags = {}
+  instance_profile_tags = {}
 }
