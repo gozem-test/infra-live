@@ -10,7 +10,7 @@ inputs = {
   principals = [
     {
       type = "Service"
-      identifiers = "ec2.amazonaws.com"
+      identifiers = ["ec2.amazonaws.com"]
     }
   ]
   policy_name = "CloudWatchLogsPermissionsPolicy"
