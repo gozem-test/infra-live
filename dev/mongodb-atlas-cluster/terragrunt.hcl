@@ -15,7 +15,7 @@ inputs = {
   provider_name = "TENANT"
   backing_provider_name = "AWS"
   provider_region_name = "US_EAST_1"
-  provider_instance_size_name = "M0"
+  provider_instance_size_name = "M10"
   node_count = 3
   priority = 7
 }
