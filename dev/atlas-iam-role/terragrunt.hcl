@@ -10,11 +10,15 @@ dependency "atlas-account" {
   config_path = "../mongodb-atlas-cloud-provider-access-setup"
 }
 
+dependency "kms-key" {
+  config_path = "../kms-key"
+}
+
 inputs = {
   principals = [
     {
-      type = "Service"
-      identifiers = ["kms.amazonaws.com"]
+      type = "AWS"
+      identifiers = [dependency.atlas-account.outputs[0].atlas_aws_account_arn]
     }
   ]
   policy_name = "AtlasPermissionsPolicy"
@@ -22,7 +26,7 @@ inputs = {
     {
       sid = "AtlasPermissions"
       actions = ["kms:*"]
-      resources = [dependency.atlas-account.outputs[0].atlas_aws_account_arn]
+      resources = [dependency.kms-key.outputs.arn]
     }
   ]
   role_name = "AtlasPermissionsRole"
