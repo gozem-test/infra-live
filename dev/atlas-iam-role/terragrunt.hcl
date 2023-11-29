@@ -18,7 +18,8 @@ inputs = {
   principals = [
     {
       type = "AWS"
-      identifiers = [dependency.atlas-account.outputs[0].atlas_aws_account_arn]
+      // identifiers = [dependency.atlas-account.outputs[0].atlas_aws_account_arn]
+      identifiers = ["arn:aws:iam::536727724300:root"]
     }
   ]
   policy_name = "AtlasPermissionsPolicy"
