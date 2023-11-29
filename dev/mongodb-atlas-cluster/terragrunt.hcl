@@ -6,6 +6,10 @@ terraform {
   source = "git@github.com:gozem-test/mongodb-atlas-cluster.git"
 }
 
+dependency "encryption" {
+  config_path = "../mongodb-atlas-encryption-at-rest"
+}
+
 inputs = {
   MONGODB_ATLAS_PUBLIC_KEY = "pmcctfoj"
   MONGODB_ATLAS_PRIVATE_KEY = "b941f0ae-30e3-4b8b-a8eb-2073b84aa346"
