@@ -19,7 +19,7 @@ inputs = {
     {
       type = "AWS"
       // identifiers = [dependency.atlas-account.outputs[0].atlas_aws_account_arn, dependency.atlas-account.outputs[0].atlas_assumed_role_external_id]
-      identifiers = ["arn:aws:iam::536727724300:root", "c603ed95-bc6b-487a-8cdc-cb47b0462139"]
+      identifiers = ["arn:aws:iam::536727724300:root"] // , "c603ed95-bc6b-487a-8cdc-cb47b0462139"]
     }
   ]
   policy_name = "AtlasPermissionsPolicy"
