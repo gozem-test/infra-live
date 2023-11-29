@@ -6,8 +6,8 @@ terraform {
   source = "git@github.com:gozem-test/iam-role.git"
 }
 
-dependency "kms-key" {
-  config_path = "../kms-key"
+dependency "atlas-account" {
+  config_path = "../mongodb-atlas-cloud-provider-access-setup"
 }
 
 inputs = {
@@ -17,13 +17,13 @@ inputs = {
       identifiers = ["kms.amazonaws.com"]
     }
   ]
-  policy_name = "KMSPermissionsPolicy"
+  policy_name = "AtlasPermissionsPolicy"
   policy_statements = [
     {
-      sid = "KMSPermissions"
+      sid = "AtlasPermissions"
       actions = ["kms:*"]
-      resources = [dependency.kms-key.outputs.arn]
+      resources = [dependency.atlas-account.outputs[0].atlas_aws_account_arn]
     }
   ]
-  role_name = "KMSPermissionsRole"
+  role_name = "AtlasPermissionsRole"
 }

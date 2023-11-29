@@ -14,6 +14,10 @@ dependency "access-setup" {
   config_path = "../mongodb-atlas-cloud-provider-access-setup"
 }
 
+dependency "access-auth" {
+  config_path = "../mongodb-atlas-cloud-provider-access-auth"
+}
+
 inputs = {
   MONGODB_ATLAS_PUBLIC_KEY = "pmcctfoj"
   MONGODB_ATLAS_PRIVATE_KEY = "b941f0ae-30e3-4b8b-a8eb-2073b84aa346"
