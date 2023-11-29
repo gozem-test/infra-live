@@ -18,7 +18,7 @@ inputs = {
   commands = [
     <<EOF
     echo 'All done!'
-    echo '${dependency.asg.outputs.instance_public_ips}'
+    echo '${dependency.asg.outputs.instance_public_ips[0]}, ${dependency.asg.outputs.instance_public_ips[1]}'
     EOF
   //   <<EOF
   // apt install curl && \
