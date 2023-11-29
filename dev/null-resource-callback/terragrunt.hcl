@@ -6,14 +6,19 @@ terraform {
   source = "git@github.com:gozem-test/null-resource.git"
 }
 
-dependency "cloudwatch-alarm" {
-  config_path = "../cloudwatch-metric-alarm"
+dependency "asg" {
+  config_path = "../asg"
+}
+
+dependency "cluster" {
+  config_path = "../mongodb-atlas-cluster"
 }
 
 inputs = {
   commands = [
     <<EOF
     echo 'All done!'
+    echo '${dependency.asg.outputs.instance_public_ips}'
     EOF
   //   <<EOF
   // apt install curl && \
