@@ -17,7 +17,8 @@ dependency "cluster" {
 inputs = {
   commands = [
     <<EOF
-    ls -la ~/.ssh
+    echo 'All Done!'
+    echo 'Next step - Ansible configuration for Node.js application'
     EOF
   //   <<EOF
   // apt install curl && \
