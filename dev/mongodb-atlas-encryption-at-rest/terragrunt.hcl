@@ -10,8 +10,8 @@ dependency "kms-key" {
   config_path = "../kms-key"
 }
 
-dependency "provider-access" {
-  config_path = "../mongodb-atlas-cloud-provider-access"
+dependency "access-setup" {
+  config_path = "../mongodb-atlas-cloud-provider-access-setup"
 }
 
 inputs = {
@@ -22,6 +22,6 @@ inputs = {
     enabled = true
     customer_master_key_id = dependency.kms-key.outputs.key_id
     region = "US_EAST_1"
-    role_id = "arn:aws:iam::534876755051:user/stephanenoutsa" # dependency.provider-access.outputs.role_id
+    role_id = dependency.access-setup.outputs.role_id
   }
 }
