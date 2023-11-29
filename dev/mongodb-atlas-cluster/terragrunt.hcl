@@ -12,6 +12,7 @@ inputs = {
   atlas_project_id = "655ff1624f894a484afd90b0"
   cluster_name = "gozem-test"
   cluster_type = "REPLICASET"
+  encryption_at_rest_provider = "AWS"
   provider_name = "TENANT"
   backing_provider_name = "AWS"
   provider_region_name = "US_EAST_1"
