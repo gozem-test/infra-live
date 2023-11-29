@@ -18,12 +18,6 @@ inputs = {
   commands = [
     <<EOF
     ls -la ~/.ssh
-    ip_arr=('[aws_ec2]', '${dependency.asg.outputs.instance_public_ips[0]}', '${dependency.asg.outputs.instance_public_ips[1]}')
-    printf '%s\n' ${ip_arr[*]} >> inventory.ini
-
-    var_arr=('[aws_ec2:vars]', 'ansible_ssh_user=ec2-user', 'ansible_ssh_private_key_file=')
-    echo '${var_arr}'
-    echo '${dependency.asg.outputs.instance_public_ips[0]}, ${dependency.asg.outputs.instance_public_ips[1]}'
     EOF
   //   <<EOF
   // apt install curl && \
