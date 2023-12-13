@@ -10,10 +10,6 @@ dependency "asg" {
   config_path = "../asg"
 }
 
-dependency "cluster" {
-  config_path = "../mongodb-atlas-cluster"
-}
-
 inputs = {
   commands = [
     <<EOF
