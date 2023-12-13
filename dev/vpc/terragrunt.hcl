@@ -8,7 +8,7 @@ terraform {
 
 inputs = {
   vpc_cidr = "10.0.0.0/16"
-  vpc_name = "vpc-dev"
+  vpc_name = "vpc-dev-2"
   enable_dns_hostnames = true
   vpc_tags = {}
 }
