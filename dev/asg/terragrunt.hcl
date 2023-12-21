@@ -31,4 +31,9 @@ inputs = {
   target_group_arns = [dependency.alb-target-group.outputs.arn]
   launch_template_id = dependency.launch-template.outputs.id
   launch_template_version = dependency.launch-template.outputs.latest_version
+  asg_tag_key = "Rolling"
+  instance_refresh = {
+    strategy = "Rolling"
+    triggers = ["tag"]
+  }
 }
