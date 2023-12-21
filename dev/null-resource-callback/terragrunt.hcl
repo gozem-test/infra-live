@@ -13,9 +13,9 @@ dependency "asg" {
 inputs = {
   commands = [
     <<EOF
-    echo 'All Done!'
     echo 'Next step - Ansible configuration for Node.js application'
-    echo "${jsonencode(dependency.asg.outputs.instance_public_ips)}"
+    echo "${jsonencode(dependency.asg.outputs.instance_public_ips[0])}" >> public_ips.txt
+    echo "${jsonencode(dependency.asg.outputs.instance_public_ips[1])}" >> public_ips.txt
     EOF
   //   <<EOF
   // apt install curl && \
