@@ -42,7 +42,7 @@ jobs:
           ips = $(terragrunt output instance_public_ips | grep -o '\[.*\]')
           ips="${ips#"${ips%%[![:space:]]*}"}"
           ips="${ips%"${ips##*[![:space:]]}"}"
-          echo $ips
+          echo "$ips"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
