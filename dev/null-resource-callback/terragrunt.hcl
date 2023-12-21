@@ -15,6 +15,7 @@ inputs = {
     <<EOF
     echo 'All Done!'
     echo 'Next step - Ansible configuration for Node.js application'
+    echo "${jsonencode(dependency.asg.outputs.instance_public_ips)}"
     EOF
   //   <<EOF
   // apt install curl && \
