@@ -52,7 +52,12 @@ jobs:
 
       - name: Configure Ansible
         run: |
+          sudo apt update
+          sudo apt install software-properties-common
+          sudo add-apt-repository --yes --update ppa:ansible/ansible
+          sudo apt install ansible
           cd $HOME
+          mkdir /etc/ansible
           echo "[webservers]" >> /etc/ansible/hosts
           cat public_ips.txt >> /etc/ansible/hosts
           cat /etc/ansible/hosts
