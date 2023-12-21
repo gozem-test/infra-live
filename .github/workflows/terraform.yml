@@ -55,10 +55,8 @@ jobs:
           sudo apt update
           sudo apt install software-properties-common
           sudo add-apt-repository --yes --update ppa:ansible/ansible
-          sudo apt install ansible
+          sudo apt install -y ansible
           cd $HOME
-          ls -l /etc
-          ls -l /etc/ansible
           sudo echo "[webservers]" >> /etc/ansible/hosts
           sudo cat public_ips.txt >> /etc/ansible/hosts
           sudo cat /etc/ansible/hosts
