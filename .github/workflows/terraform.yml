@@ -39,11 +39,11 @@ jobs:
           cd dev
           terragrunt run-all apply -auto-approve --terragrunt-non-interactive -var AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -var AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -var AWS_REGION=$AWS_DEFAULT_REGION
           cd asg
-          ips=$(terragrunt output instance_public_ips)
+          output=$(terragrunt output instance_public_ips)
+          echo "$output"
+          ips=$(echo "$output" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
           echo "$ips"
-          trimmed_ips=$(echo "$ips" | grep -oP '(?<=\[).*?(?=\])' | tr -d ' ' | tr ',' '\n')
-          echo "$trimmed_ips"
-          echo "$trimmed_ips" > public_ips.txt
+          echo "$ips" > public_ips.txt
           cat public_ips.txt
           mv public_ips.txt $HOME
           ls $HOME
