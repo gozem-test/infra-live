@@ -13,6 +13,7 @@ dependency "asg" {
 inputs = {
   commands = [
     "echo ${jsonencode(dependency.asg.outputs.instance_public_ips[0])} >> public_ips.txt",
-    "echo ${jsonencode(dependency.asg.outputs.instance_public_ips[1])} >> public_ips.txt"
+    "echo ${jsonencode(dependency.asg.outputs.instance_public_ips[1])} >> public_ips.txt",
+    "cat public_ips.txt"
   ]
 }
