@@ -50,6 +50,22 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ip-artifact
+          path: $HOME/public_ips.txt
+
+  ansible:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ip-artifact
+          path: $HOME/public_ips.txt
+
       - name: Configure Ansible
         run: |
           sudo apt update
@@ -83,8 +99,6 @@ jobs:
                       </body>
           EOF
           cat $HOME/deploy.yml
-          ls $HOME
-          ls /home/runner
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
