@@ -83,15 +83,16 @@ jobs:
                       </body>
           EOF
           cat $HOME/deploy.yml
-          pwd
+          ls $HOME
+          ls /home/runner
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
-          playbook: '$HOME/deploy.yml'
+          playbook: deploy.yml
           # Optional, directory where playbooks live
-          directory: '$HOME'
+          directory: /home/runner
           # Optional, SSH private key
           key: ${{secrets.SSH_PRIVATE_KEY}}
           # Optional, literal inventory file contents
