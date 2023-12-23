@@ -63,7 +63,7 @@ jobs:
       - name: Configure playbook
         run: |
           cd $HOME
-          cat <<EOF
+          cat > deploy.yml <<EOF
           ---
           - hosts: web
             remote_user: ec2-user
@@ -81,7 +81,8 @@ jobs:
                       <body>
                         <h1>This is a test page</h1>
                       </body>
-          EOF >> deploy.yml
+          EOF
+          cat $HOME/deploy.yml
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
