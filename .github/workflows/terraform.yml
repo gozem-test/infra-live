@@ -54,16 +54,52 @@ jobs:
         run: |
           sudo apt update
           sudo pipx inject ansible-core jmespath
-          ansible --version
-          ls -l /etc
-          sudo echo "[web]" >> /etc/ansible/hosts
-          sudo cat $HOME/public_ips.txt >> /etc/ansible/hosts
-          sudo cat /etc/ansible/hosts
-        # run: |
-        #   sudo apt update
-        #   sudo apt install software-properties-common
-        #   sudo add-apt-repository --yes --update ppa:ansible/ansible
-        #   sudo apt install -y ansible
-        #   sudo echo "[webservers]" >> /etc/ansible/hosts
-        #   sudo cat $HOME/public_ips.txt >> /etc/ansible/hosts
-        #   sudo cat /etc/ansible/hosts
+          ansible-playbook --version
+          cd $HOME
+          sudo echo "[web]" >> ansible_hosts
+          sudo cat public_ips.txt >> ansible_hosts
+          sudo cat ansible_hosts
+
+      - name: Configure playbook
+        run: |
+          cd $HOME
+          cat <<EOF
+          ---
+          - hosts: web
+            remote_user: ec2-user
+            become: true
+
+            tasks:
+              - name: Create web page
+                copy:
+                  dest: "/var/www/html/test.html"
+                  content: |
+                    <html>
+                      <head>
+                        <title>Test Page</title>
+                      </head>
+                      <body>
+                        <h1>This is a test page</h1>
+                      </body>
+          EOF >> deploy.yml
+
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: $HOME/deploy.yml
+          # Optional, directory where playbooks live
+          directory: ./
+          # Optional, SSH private key
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          # Optional, literal inventory file contents
+          # inventory: |
+          #   [all]
+          #   example.com
+
+          #   [group1]
+          #   example.com
+          # Optional, additional flags to pass to ansible-playbook
+          options: |
+            --inventory $HOME/ansible_hosts
+            --verbose
