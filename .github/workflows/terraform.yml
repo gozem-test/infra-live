@@ -54,6 +54,10 @@ jobs:
         run: |
           sudo apt update
           sudo pipx inject ansible-core jmespath
+          ansible --version
+          sudo echo "[web]" >> /etc/ansible/hosts
+          sudo cat $HOME/public_ips.txt >> /etc/ansible/hosts
+          sudo cat /etc/ansible/hosts
         # run: |
         #   sudo apt update
         #   sudo apt install software-properties-common
