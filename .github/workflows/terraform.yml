@@ -88,9 +88,9 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
-          playbook: $HOME/deploy.yml
+          playbook: deploy.yml
           # Optional, directory where playbooks live
-          directory: ./
+          directory: $HOME
           # Optional, SSH private key
           key: ${{secrets.SSH_PRIVATE_KEY}}
           # Optional, literal inventory file contents
@@ -102,5 +102,5 @@ jobs:
           #   example.com
           # Optional, additional flags to pass to ansible-playbook
           options: |
-            --inventory $HOME/ansible_hosts
+            --inventory ansible_hosts
             --verbose
