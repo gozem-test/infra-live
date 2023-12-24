@@ -44,6 +44,7 @@ jobs:
           ips=$(echo "$output" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
           echo "$ips" > public_ips.txt
           cat public_ips.txt
+          mv public_ips.txt $HOME
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -53,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ip-artifact
-          path: ./public_ips.txt
+          path: $HOME/public_ips.txt
 
   ansible:
     runs-on: ubuntu-latest
@@ -64,7 +65,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ip-artifact
-          path: ./public_ips.txt
+          path: $HOME/public_ips.txt
 
       - name: Configure Ansible
         run: |
