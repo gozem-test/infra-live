@@ -97,10 +97,6 @@ jobs:
                       <body>
                         <h1>This is a test page</h1>
                       </body>
-              - name: Remove test page
-                file:
-                  path: "/var/www/html/test.html"
-                  state: absent
           EOF
           cat $HOME/deploy.yml
 
