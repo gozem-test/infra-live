@@ -125,7 +125,7 @@ jobs:
 
   destroy:
     if: ${{ vars.DESTROY == 'true' }}
-    needs: [ansible]
+    # needs: [ansible]
     runs-on: ubuntu-latest
 
     steps:
