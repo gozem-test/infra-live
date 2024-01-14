@@ -7,10 +7,20 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Run Terragrunt destroy command'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - true
+          - false
 
 jobs:
   terraform:
-    if: ${{ vars.DESTROY == 'false' }}
+    if: ${{ !inputs.destroy || inputs.destroy == 'false' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -58,7 +68,7 @@ jobs:
           path: dev/asg/public_ips.txt
 
   ansible:
-    if: ${{ vars.DESTROY == 'false' }}
+    if: ${{ inputs.destroy == 'false' }}
     runs-on: ubuntu-latest
     needs: [terraform]
 
@@ -124,7 +134,7 @@ jobs:
             --verbose
 
   destroy:
-    if: ${{ vars.DESTROY == 'true' }}
+    if: ${{ inputs.destroy == 'true' }}
     # needs: [ansible]
     runs-on: ubuntu-latest
 
