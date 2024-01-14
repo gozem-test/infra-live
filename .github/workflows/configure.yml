@@ -68,7 +68,7 @@ jobs:
           path: dev/asg/public_ips.txt
 
   ansible:
-    if: ${{ inputs.destroy == 'false' }}
+    if: ${{ !inputs.destroy || inputs.destroy == 'false' }}
     runs-on: ubuntu-latest
     needs: [terraform]
 
